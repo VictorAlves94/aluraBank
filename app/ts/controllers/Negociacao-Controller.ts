@@ -3,6 +3,7 @@ class NegociacaoController {
     private _inputData: HTMLInputElement;
     private _inputQuantidade: HTMLInputElement;
     private _inputValor: HTMLInputElement;
+    private negociacoes: Negociacoes = new Negociacoes();
 
     constructor() {
 
@@ -14,7 +15,8 @@ class NegociacaoController {
     adiciona(): void {
         const negociacao = this.criaNegociacao();
     
-        console.log(negociacao);
+       this.negociacoes.adcionar(negociacao);
+       console.log(this.negociacoes.lista())
        
         this.limparFormulario();
 
