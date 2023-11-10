@@ -4,21 +4,24 @@ class NegociacaoController {
     private _inputQuantidade: HTMLInputElement;
     private _inputValor: HTMLInputElement;
     private negociacoes: Negociacoes = new Negociacoes();
+    private negociacoesview: NegociacoesView = new NegociacoesView('#negociacoesView');
+    private mensagemView: MensagemView = new MensagemView('#mensagemView');
 
     constructor() {
 
         this._inputData = document.querySelector('#data');
         this._inputQuantidade = document.querySelector('#quantidade');
         this._inputValor = document.querySelector('#valor');
+        this.negociacoesview.update(this.negociacoes);
     }
 
     adiciona(): void {
         const negociacao = this.criaNegociacao();
     
        this.negociacoes.adcionar(negociacao);
-       console.log(this.negociacoes.lista())
-       
-        this.limparFormulario();
+       this.negociacoesview.update(this.negociacoes);
+       this.mensagemView.update('negociação adicionada com sucesso.');
+       this.limparFormulario();
 
 
     }
