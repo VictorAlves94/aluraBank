@@ -1,11 +1,11 @@
 class Negociacoes{
     private negociacoes:Negociacao[] = [];
 
-    adcionar(negociacao: Negociacao){
+    public adcionar(negociacao: Negociacao){
     this.negociacoes.push(negociacao);
     }
 
-    lista(): readonly Negociacao[] {
+    public lista(): readonly Negociacao[] {
         return this.negociacoes;
     }
 }
