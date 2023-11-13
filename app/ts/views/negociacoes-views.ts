@@ -19,7 +19,8 @@ class NegociacoesView extends View<Negociacoes>{
                     <td>${negociacao.quantidade}</td>
                     <td>${negociacao.valor}</td>
                 </tr>
-                `
+                <script>alert('Oi')</script>
+                `;
             }).join('')}
             </tbody>
         </table>  

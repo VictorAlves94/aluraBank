@@ -4,39 +4,46 @@ class NegociacaoController {
     private _inputQuantidade: HTMLInputElement;
     private _inputValor: HTMLInputElement;
     private negociacoes: Negociacoes = new Negociacoes();
-    private negociacoesview: NegociacoesView = new NegociacoesView('#negociacoesView');
+    private negociacoesview: NegociacoesView = new NegociacoesView('#negociacoesView', true);
     private mensagemView: MensagemView = new MensagemView('#mensagemView');
 
     constructor() {
 
-        this._inputData = document.querySelector('#data');
-        this._inputQuantidade = document.querySelector('#quantidade');
-        this._inputValor = document.querySelector('#valor');
+        this._inputData = <HTMLInputElement>document.querySelector('#data');
+        this._inputQuantidade = document.querySelector('#quantidade')as HTMLInputElement;;
+        this._inputValor = document.querySelector('#valor')as HTMLInputElement;;
         this.negociacoesview.update(this.negociacoes);
     }
-
+    @logarTempoExecucao()
     public adiciona(): void {
-        const negociacao = this.criaNegociacao();
-            if(negociacao.data.getDay() > 0 && negociacao.data.getDay() < 6){
+      
+        const negociacao = Negociacao.criaDe(
+            this._inputData.value,
+            this._inputQuantidade.value,
+            this._inputValor.value
+
+        );
+    if (!this.ehDiaUtil(negociacao.data)){
+    
+        this.mensagemView
+        .update('Apenas negociações em dias úteis são aceitas.')
+        return;
+    }
        this.negociacoes.adcionar(negociacao);
        this.limparFormulario();
        this.atualizaView();
-            }else{
-                this.mensagemView
-                .update('Apenas negociações em dias úteis são aceitas.')
-            }
+         
 
 
     }
 
-    private criaNegociacao(): Negociacao{
-        const exp = /-/g;
-        const date = new Date(this._inputData.value.replace(exp, ','));
-        const quantidade = parseInt(this._inputQuantidade.value);
-        const valor = parseFloat(this._inputValor.value);
-        return new Negociacao(date, quantidade ,valor);
-        
+    ehDiaUtil(data: Date){
+        return data.getDay() > DiasDaSemanas.DOMINGO 
+        && data.getDay() < DiasDaSemanas.SABADO;
+
     }
+
+ 
 
     private limparFormulario(): void {
         this._inputData.value = '';
