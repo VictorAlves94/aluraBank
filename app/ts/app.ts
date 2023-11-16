@@ -1,3 +1,5 @@
+import { NegociacaoController } from 'c:/Users/Yuri Alves/Desktop/victor/alurabank/app/ts/controllers/Negociacao-Controller';
+
 
 const controller = new NegociacaoController()
 const form = document.querySelector('.form');

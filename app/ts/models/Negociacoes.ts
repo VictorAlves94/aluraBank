@@ -1,8 +1,10 @@
-class Negociacoes{
-    private negociacoes:Negociacao[] = [];
+import { Negociacao } from 'c:/Users/Yuri Alves/Desktop/victor/alurabank/app/js/models/negociacao.js';
 
-    public adcionar(negociacao: Negociacao){
-    this.negociacoes.push(negociacao);
+export class Negociacoes {
+    private negociacoes: Negociacao[] = [];
+
+    public adcionar(negociacao: Negociacao) {
+        this.negociacoes.push(negociacao);
     }
 
     public lista(): readonly Negociacao[] {

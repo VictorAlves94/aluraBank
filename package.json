@@ -5,11 +5,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc",
-    "tsc": "tsc -w"
+    "start": "concurrently \"npm run tsc\" \"npm run server\"",
+    "tsc": "tsc -w",
+    "server": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "typescript": "^2.3.2"
   },
   "description": ""

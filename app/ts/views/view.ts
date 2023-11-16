@@ -10,8 +10,7 @@ abstract class View <T> {
 
       
     }
-    @inspect()
-    @logarTempoExecucao()
+
     public update(model : T):void{
         let template = this.template(model); 
         this.elemento.innerHTML = template;

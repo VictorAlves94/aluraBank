@@ -1,6 +1,8 @@
+import { Negociacoes } from 'c:/Users/Yuri Alves/Desktop/victor/alurabank/app/ts/models/Negociacoes';
+
 class NegociacoesView extends View<Negociacoes>{
 
-
+    @escape
     protected template(model : Negociacoes): string{
         return `
         <table class="table table-hover table-bordered"> 

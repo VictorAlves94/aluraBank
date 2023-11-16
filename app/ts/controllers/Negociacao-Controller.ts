@@ -1,7 +1,18 @@
-class NegociacaoController {
+import { domInjector } from 'c:/Users/Yuri Alves/Desktop/victor/alurabank/app/js/decorators/dom-injector.js';
+import { inspect } from 'c:/Users/Yuri Alves/Desktop/victor/alurabank/app/js/decorators/inspect.js';
+import { logarTempoDeExecucao } from 'c:/Users/Yuri Alves/Desktop/victor/alurabank/app/js/decorators/logar-tempo-de-execucao.js';
+import { DiasDaSemana } from 'c:/Users/Yuri Alves/Desktop/victor/alurabank/app/js/enums/dias-da-semana.js';
+import { Negociacao } from 'c:/Users/Yuri Alves/Desktop/victor/alurabank/app/js/models/negociacao.js';
+import { Negociacoes } from 'c:/Users/Yuri Alves/Desktop/victor/alurabank/app/js/models/negociacoes.js';
+import { MensagemView } from 'c:/Users/Yuri Alves/Desktop/victor/alurabank/app/js/views/mensagem-view.js';
+import { NegociacoesView } from 'c:/Users/Yuri Alves/Desktop/victor/alurabank/app/js/views/negociacoes-view.js';
 
+export class NegociacaoController {
+    @domInjector('#data')
     private _inputData: HTMLInputElement;
+    @domInjector('#quantidade')
     private _inputQuantidade: HTMLInputElement;
+    @domInjector('#valor')
     private _inputValor: HTMLInputElement;
     private negociacoes: Negociacoes = new Negociacoes();
     private negociacoesview: NegociacoesView = new NegociacoesView('#negociacoesView');
@@ -9,11 +20,9 @@ class NegociacaoController {
 
     constructor() {
 
-        this._inputData = <HTMLInputElement>document.querySelector('#data');
-        this._inputQuantidade = document.querySelector('#quantidade')as HTMLInputElement;;
-        this._inputValor = document.querySelector('#valor')as HTMLInputElement;;
-        this.negociacoesview.update(this.negociacoes);
+         this.negociacoesview.update(this.negociacoes);
     }
+    @inspect()
     @logarTempoExecucao()
     public adiciona(): void {
       
@@ -38,8 +47,8 @@ class NegociacaoController {
     }
 
     ehDiaUtil(data: Date){
-        return data.getDay() > DiasDaSemanas.DOMINGO 
-        && data.getDay() < DiasDaSemanas.SABADO;
+        return data.getDay() > DiasDaSemana.DOMINGO 
+        && data.getDay() < DiasDaSemana.SABADO;
 
     }
 
