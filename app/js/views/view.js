@@ -1,11 +1,11 @@
-export class View {
+class View {
     constructor(seletor) {
         const elemento = document.querySelector(seletor);
         if (elemento) {
             this.elemento = elemento;
         }
         else {
-            throw Error(`Seletor ${seletor} não existe no DOM. Verifique`);
+            throw Error(`Seletor${seletor} não existe no Dom, verifique.`);
         }
     }
     update(model) {
@@ -13,4 +13,3 @@ export class View {
         this.elemento.innerHTML = template;
     }
 }
-//# sourceMappingURL=view.js.map

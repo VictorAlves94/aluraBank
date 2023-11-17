@@ -1,4 +1,4 @@
-function escape(
+function meuEscape(
     target: any,
     propertykey:string,
     descriptor: PropertyDescriptor
